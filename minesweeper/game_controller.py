@@ -8,7 +8,6 @@ class game_controller:
     def play_until_end(self):
         while self.game_state.game_state == GameState.PLAYING:
             self.play_game_turn()
-            pass
         self.print_end_game()
 
     def play_game_turn(self):

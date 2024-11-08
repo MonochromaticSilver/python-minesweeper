@@ -17,7 +17,6 @@ def main():
             main_game_state = game_state()
             main_game_controller = game_controller(main_game_state)
             main_game_controller.play_until_end()
-            pass
         elif option == "2":
             break
         else:

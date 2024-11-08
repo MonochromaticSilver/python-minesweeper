@@ -13,6 +13,7 @@ class game_state:
         self.mines = []
         self.flags = []
         self.revealed = []
+        self.cursor = (0,0)
         self.game_state = GameState.PLAYING
         self._generate_mines()
 
