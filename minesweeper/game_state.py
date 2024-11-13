@@ -35,7 +35,7 @@ class game_state:
                 current_generated_mines += 1
 
         
-        print(randPoints)
+        self.mines = randPoints
 
 game_instance = game_state()
     
