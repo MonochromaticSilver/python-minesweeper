@@ -1,6 +1,6 @@
-from minesweeper.game_state import game_state
-from minesweeper.game_controller import game_controller
-from minesweeper.ui import clear_console
+from .game_state import game_state
+from .game_controller import game_controller
+from .ui import clear_console
 
 def main():
     # Application loop

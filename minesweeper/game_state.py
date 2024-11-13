@@ -10,16 +10,15 @@ class game_state:
     def __init__(self, width = 9, height = 9, mine_count = 10):
         self.width = width
         self.height = height
-        self.mine_count = mine_count
         self.mines = []
         self.flags = []
         self.revealed = []
         self.cursor = (0,0)
         self.game_state = GameState.PLAYING
         # self.board = [['☐' for _ in range(self.width)] for _ in range(self.height)] possible solution?
-        self._generate_mines()
+        self._generate_mines(mine_count)
 
-    def _generate_mines(self):
+    def _generate_mines(self, mine_count):
         # Task: Implement the method that generates mines based on width/height/mine_count
         # This would involve generating a list of random (x, y) coordinates
         rangeX = (0, self.width)
@@ -27,7 +26,7 @@ class game_state:
 
         randPoints = []
         current_generated_mines = 0
-        while current_generated_mines < self.mine_count:
+        while current_generated_mines < mine_count:
             x = random.randrange(*rangeX)
             y = random.randrange(*rangeY)
             if (x, y) not in randPoints:
