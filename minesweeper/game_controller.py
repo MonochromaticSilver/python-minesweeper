@@ -27,6 +27,7 @@ class game_controller:
             self.game_state.cursor = (self.game_state.cursor[0], min(self.game_state.height - 1, self.game_state.cursor[1] + 1))
         if key == readchar.key.UP:
             self.game_state.cursor = (self.game_state.cursor[0], max( 0, self.game_state.cursor[1] - 1))
+
     def print_end_game(self):
         # Task: Implement the method that prints the end game message then waits for the user to push a key (to return to the menu loop)
         clear_console()
