@@ -1,4 +1,4 @@
-from game_state import game_state
+from .game_state import game_state
 import os
 
 
