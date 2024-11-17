@@ -11,8 +11,12 @@ def print_board(game_state: game_state):
                 print("🟨", end="")
             elif (x, y) in game_state.mines:
                 print("💣", end="")
-            else:
+            elif (x, y) in game_state.flags:
+                print("🚩", end="")
+            elif (x, y) in game_state.revealed:
                 print("🟫", end="")
+            else:
+                print("🟩", end="")
         print()
 
 def clear_console():

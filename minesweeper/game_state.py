@@ -15,7 +15,6 @@ class game_state:
         self.revealed = []
         self.cursor = (0,0)
         self.game_state = GameState.PLAYING
-        # self.board = [['☐' for _ in range(self.width)] for _ in range(self.height)] possible solution?
         self._generate_mines(mine_count)
 
     def _generate_mines(self, mine_count):
