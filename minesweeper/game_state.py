@@ -31,9 +31,26 @@ class game_state:
             if (x, y) not in randPoints:
                 randPoints.append((x, y))
                 current_generated_mines += 1
-
         
         self.mines = randPoints
+
+    def number_mines(self, x, y):
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]
+
+        counted_mines = 0
+
+        for dx, dy in directions:
+            mine_check_x = x + dx
+            mine_check_y = y + dy
+
+            if (mine_check_x, mine_check_y) in self.mines:
+                counted_mines += 1
+                # self.shown_listed_mines.append((mine_check_x, mine_check_y))
+
+        return counted_mines
+
+
+
 
 game_instance = game_state()
     
