@@ -1,3 +1,4 @@
+from collections import deque
 from minesweeper.game_state import game_state, GameState
 from minesweeper.ui import clear_console, print_board
 import readchar
@@ -36,8 +37,30 @@ class game_controller:
             if self.game_state.cursor in self.game_state.mines:
                 self.game_state.game_state = 2
             else:
-                self.game_state.revealed.append(self.game_state.cursor)
+                self._reveal(self.game_state.cursor[0], self.game_state.cursor[1])
 
+    def _reveal(self, x, y):
+        queue = deque()
+        queue.append((x, y))
+        while len(queue) > 0:
+            item = queue.popleft()
+            if item in self.game_state.revealed:
+                continue
+            self.game_state.revealed.append(item)
+            if self.game_state.number_mines(item[0], item[1]) > 0:
+                continue
+            directions = [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]
+
+            for dx, dy in directions:
+                mine_check_x = item[0] + dx
+                mine_check_y = item[1] + dy
+
+                if mine_check_x < 0 or mine_check_x >= self.game_state.width:
+                    continue
+                if mine_check_y < 0 or mine_check_y >= self.game_state.height:
+                    continue
+                queue.append((mine_check_x, mine_check_y))
+                    
     def print_end_game(self):
         # Task: Implement the method that prints the end game message then waits for the user to push a key (to return to the menu loop)
         clear_console()
