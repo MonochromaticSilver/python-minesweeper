@@ -1,4 +1,4 @@
-from .game_state import game_state
+from .game_state import game_state, GameState
 import os
 # import rich
 
@@ -11,7 +11,7 @@ def print_board(game_state: game_state):
         for x in range(game_state.width):
             if (x, y) == game_state.cursor:
                 print("🟨", end="")
-            elif (x, y) in game_state.mines:
+            elif (x, y) in game_state.mines and game_state.game_state != GameState.PLAYING:
                 print("💣", end="")
             elif (x, y) in game_state.flags:
                 print("🚩", end="")
